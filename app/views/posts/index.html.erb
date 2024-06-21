@@ -3,5 +3,6 @@
 <% @posts.each do |post| %>
   <div>
     <%= image_tag post.get_image %>
+    <%= link_to post.title, post_path(post.id) %>
   </div>
 <% end %>
