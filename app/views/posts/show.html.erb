@@ -1,15 +1,15 @@
 <h1>投稿詳細</h1>
 
 <div>
-  <%= image_tag @post.get_image %>
+  <%= image_tag @post.get_image(100, 100) %>
   <p>タイトル:<%= @post.title %></p>
   <p>本文:<%= @post.body %></p>
-
+  
   <p>ユーザ名:<%= @post.user.name %></p>
   <p>投稿日:<%= @post.created_at.strftime('%y/%m/%d') %></p>
 
   <% if @post.user == current_user %>
-    <%= link_to "削除", post_path(@post), method: :delete %>
+    <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？"%>
     <%= link_to "編集", edit_post_path(@post.id) %>
   <% end %>
 
