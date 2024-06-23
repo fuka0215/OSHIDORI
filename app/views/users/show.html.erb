@@ -5,8 +5,8 @@
 <%= @user.bio %>
 
 <% if @user == current_user %>
-  <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
-  <p><%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？"%></p>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-success mr-1" %></p>
+  <p><%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %></p>
 <% end %>
 
 <h3><%= @user.name %>の投稿一覧</h3>

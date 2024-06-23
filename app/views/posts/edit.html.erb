@@ -2,11 +2,15 @@
 
 <%= form_with model: @post do |f| %>
 
-  <label>タイトル</label>
-  <%= f.text_field :title %>
+  <label>投稿画像</label><br>
+  <%= f.file_field :image, accept: "image/*" %><br>
 
-  <label>本文</label>
-  <%= f.text_area :body %>
+
+  <label>タイトル</label><br>
+  <%= f.text_field :title %><br>
+
+  <label>本文</label><br>
+  <%= f.text_area :body %><br>
 
   <%= f.submit "保存" %>
 
