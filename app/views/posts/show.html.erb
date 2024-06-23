@@ -4,8 +4,8 @@
   <%= image_tag @post.get_image(100, 100) %>
   <p>タイトル:<%= @post.title %></p>
   <p>本文:<%= @post.body %></p>
-  
-  <p>ユーザ名:<%= @post.user.name %></p>
+  <p>投稿ユーザ画像:<%= image_tag @post.user.get_profile_image(100, 100) %></p>
+  <p>ユーザ名:<%= link_to @post.user.name, user_path(@post.user.id) %></p>
   <p>投稿日:<%= @post.created_at.strftime('%y/%m/%d') %></p>
 
   <% if @post.user == current_user %>
