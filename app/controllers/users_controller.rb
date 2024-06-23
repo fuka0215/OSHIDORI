@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def index
+    @users = User.all
   end
 
   def show
@@ -17,6 +18,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user.id)
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to new_user_registration_path
   end
 
   private
