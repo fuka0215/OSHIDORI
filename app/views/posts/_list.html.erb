@@ -1,0 +1,12 @@
+
+
+<% posts.each do |post| %>
+<div>
+  <%= image_tag post.get_image(300, 300) %>
+  <%= link_to post.title, post_path(post.id) %>
+  <%= link_to user_path(post.user.id) do %>
+    <%= image_tag post.user.get_profile_image(50, 50) %>
+  <% end %>
+  <p><%= post.user.name %></p>
+</div>
+<% end %>

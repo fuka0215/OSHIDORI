@@ -1,8 +1,4 @@
 <h1>みんなの投稿一覧</h1>
 
-<% @posts.each do |post| %>
-  <div>
-    <%= image_tag post.get_image(100, 100) %>
-    <%= link_to post.title, post_path(post.id) %>
-  </div>
-<% end %>
+<%= render 'list', posts: @posts %>
+

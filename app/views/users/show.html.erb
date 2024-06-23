@@ -6,14 +6,9 @@
 
 <% if @user == current_user %>
   <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
-  <p><%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に削除しますか？"%></p>
+  <p><%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？"%></p>
 <% end %>
 
 <h3><%= @user.name %>の投稿一覧</h3>
-<% @posts.each do |post| %>
-<div>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image(100, 100) %>
-  <% end %>
-</div>
-<% end %>
+
+<%= render 'posts/list', posts: @posts %>
