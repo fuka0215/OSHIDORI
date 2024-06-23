@@ -1,7 +1,12 @@
 <h1><%= @user.name %>のプロフィール</h1>
 
 <%= image_tag @user.get_profile_image(100, 100) %>
+<h4>自己紹介</h4>
+<%= @user.bio %>
 
+<%= if @user == current_user %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
+<% end %>
 
 <h3><%= @user.name %>の投稿一覧</h3>
 <% @posts.each do |post| %>
