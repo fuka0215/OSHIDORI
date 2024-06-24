@@ -7,7 +7,7 @@
         <%= form_with model: @user do |f| %>
           <%= f.file_field :profile_image, accept: "image/*", class: "w-100" %>
           <div class="input-group mb-3 mt-4">
-            <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
+            <%= f.text_field :name, class: "form-control", placeholder: "ユーザ名" %>
           </div>
           <%= f.text_area :bio, class: "form-control", rows: "3", placeholder: "自己紹介" %>
           <hr>
