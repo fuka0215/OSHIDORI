@@ -1,16 +1,29 @@
-<h1>投稿詳細</h1>
+<!--投稿詳細-->
+<h4>投稿詳細</h4>
 
-<div>
-  <%= image_tag @post.get_image(100, 100) %>
-  <p>タイトル:<%= @post.title %></p>
-  <p>本文:<%= @post.body %></p>
-  <p>投稿ユーザ画像:<%= image_tag @post.user.get_profile_image(100, 100) %></p>
-  <p>ユーザ名:<%= link_to @post.user.name, user_path(@post.user.id) %></p>
-  <p>投稿日:<%= @post.created_at.strftime('%y/%m/%d') %></p>
-
-  <% if @post.user == current_user %>
-    <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success mr-1" %>
-    <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-  <% end %>
-
+<div class="card-list-container py-5">
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <%= image_tag @post.get_image(300, 300), class: "card-img-top"; %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <%= link_to user_path(@post.user.id) do %>
+            <%= image_tag @post.user.get_profile_image(100, 100), class: "rounded-circle"; %>
+          <% end %>
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <%= link_to @post.title, post_path(@post.id), class: "text_dark"; %>
+          </p>
+          <p class="card-text"><%= @post.body %></p>
+          <p>投稿日:<%= @post.created_at.strftime('%y/%m/%d') %></p>
+          <span>By <%= @post.user.name %></span>
+          <% if @post.user == current_user %>
+            <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-block btn-success" %>
+            <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

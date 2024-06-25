@@ -1,8 +1,21 @@
-<h1>ユーザーの一覧</h1>
-
-<% @users.each do |user| %>
-  <div>
-    <%= image_tag user.get_profile_image(100, 100) %>
-    <%= link_to user.name, user_path(user.id) %>
+<!--ユーザ一覧-->
+<h4>ユーザ</h4>
+<div class="card-list-container py-5">
+  <% @users.each do |user| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="row mx-3">
+      <div class="col-md-3">
+        <%= link_to user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(100, 100) %>
+          <% end %>
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h4 class="card-title"><%= user.name %></h4>
+          <p class="card-text"><%= user.bio %></p>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
+  <% end %>
+</div>

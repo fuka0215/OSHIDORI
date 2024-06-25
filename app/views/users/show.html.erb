@@ -1,15 +1,26 @@
-<h1><%= @user.name %>のプロフィール</h1>
+<!--ユーザ詳細-->
+<h4><%= @user.name %>のプロフィール</h4>
+<div class="card-list-container py-5">
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="row mx-3">
+      <div class="col-md-3 p-1">
+        <%= link_to user_path(@user.id) do %>
+          <%= image_tag @user.get_profile_image(150, 150) %>
+          <% end %>
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h4 class="card-title"><%= @user.name %></h4>
+          <p class="card-text"><%= @user.bio %></p>
+          <% if @user == current_user %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-block btn-success" %></p>
+            <p><%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-block btn-danger" %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= image_tag @user.get_profile_image(100, 100) %>
-<h4>自己紹介</h4>
-<%= @user.bio %>
-
-<% if @user == current_user %>
-  <p><%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-success mr-1" %></p>
-  <p><%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %></p>
-<% end %>
-
-<h3><%= @user.name %>の投稿一覧</h3>
-
+<h4><%= @user.name %>の投稿一覧</h4>
 <%= render 'posts/list', posts: @posts %>
-
