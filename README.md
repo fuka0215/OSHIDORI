@@ -38,5 +38,8 @@
 - IDE : Cloud9
 
 ## 使用素材
-後ほど記載予定
+
+フリーイラスト、フリー画像素材として以下を使用予定
+- いらすとや (https://www.irasutoya.com/)
+- Adobe Stok (https://stock.adobe.com/jp/)
 
