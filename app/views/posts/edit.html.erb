@@ -4,6 +4,16 @@
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">投稿編集</h5>
       <div class="form-body p-4">
+        <% if @post.errors.any? %>
+          <ul class="alert alert-danger" role="alert">
+            <h6 class="alert-heading">
+              <%= @post.errors.count %>件のエラーが発生しました
+            </h6>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <%= form_with model: @post do |f| %>
           <%= f.file_field :image, accept: "image/*", class: "w-100" %>
           <div class="input-group mb-3 mt-4">
@@ -13,7 +23,7 @@
           <hr>
           <%= f.submit '保存',class: "btn btn-lg btn-block btn-info mt-4" %>
         <% end %>
-        <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
+        <p><%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %></p>
       </div>
     </div>
   </div>
