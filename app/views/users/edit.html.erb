@@ -13,6 +13,7 @@
           <hr>
           <%= f.submit '保存',class: "btn btn-lg btn-block btn-info mt-4" %>
         <% end %>
+        <%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-block btn-danger" %>
       </div>
     </div>
   </div>

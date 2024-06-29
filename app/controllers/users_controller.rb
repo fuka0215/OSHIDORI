@@ -16,8 +16,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      flash[:notice] = "編集に成功しました"
+      redirect_to user_path(@user.id)
+    else
+      flash.now[:alert] = "編集に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
@@ -35,7 +40,7 @@ class UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to posts_path
+      redirect_to user_path(current_user.id)
     end
   end
 
