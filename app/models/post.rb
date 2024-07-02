@@ -7,6 +7,14 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :image, presence: true
 
+  def self.search(title)
+    if title
+      Post.where(['title LIKE?', "%#{title}%"])
+    else
+      Post.all
+    end
+  end
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image_square.jpg')
