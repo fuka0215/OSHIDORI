@@ -8,12 +8,13 @@ class Post < ApplicationRecord
   validates :image, presence: true
 
   def self.search(title)
-    if title
-      Post.where(['title LIKE?', "%#{title}%"])
-    else
+   if title
+     Post.where(['title LIKE?', "%#{title}%"])
+   else
       Post.all
-    end
+   end
   end
+
 
   def get_image(width, height)
     unless image.attached?
