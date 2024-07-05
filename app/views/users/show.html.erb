@@ -1,5 +1,4 @@
 <!--ユーザ詳細-->
-<h4><%= @user.name %>のプロフィール</h4>
 <div class="card-list-container py-5">
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <div class="row mx-3">
@@ -20,7 +19,6 @@
       </div>
     </div>
   </div>
+  <!-- ユーザの投稿一覧 -->
+  <%= render 'posts/list', posts: @posts %>
 </div>
-
-<h4><%= @user.name %>の投稿一覧</h4>
-<%= render 'posts/list', posts: @posts %>

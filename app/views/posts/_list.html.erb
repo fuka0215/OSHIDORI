@@ -1,5 +1,4 @@
 <!--投稿-->
-<div class="card-list-container py-5">
   <% posts.each do |post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= image_tag post.get_image(300, 300), class: "card-img-top"; %>
@@ -21,4 +20,7 @@
     </div>
   </div>
   <% end %>
-</div>
+
+  <% if posts.count == 0 %>
+    <div class="text-center">検索結果はありません</div>
+  <% end %>

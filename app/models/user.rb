@@ -8,10 +8,18 @@ class User < ApplicationRecord
   has_many :post, dependent: :destroy
 
   has_one_attached :profile_image
-  
+
   validates :name, uniqueness: true
   validates :name, presence: true
-  
+
+  def self.search(name)
+    if name
+      User.where(['name LIKE?', "%#{name}%"])
+    else
+      User.all
+    end
+  end
+
 
   def get_profile_image(width, height)
     unless profile_image.attached?

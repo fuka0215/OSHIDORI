@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.search(params[:search])
   end
 
   def show
