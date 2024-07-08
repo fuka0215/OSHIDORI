@@ -8,7 +8,7 @@ class PostCommentsController < ApplicationController
       flash[:notice] = "送信に成功しました"
       redirect_to post_path(@post)
     else
-      @post_comment = PostComment.new
+      @post_comment = comment
       @post = Post.find(params[:post_id])
       flash.now[:alert] = "送信に失敗しました"
       render "posts/show"
