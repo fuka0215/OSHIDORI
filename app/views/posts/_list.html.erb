@@ -1,4 +1,4 @@
-<!--投稿-->
+<!--投稿一覧-->
   <% posts.each do |post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= image_tag post.get_image(300, 300), class: "card-img-top"; %>
@@ -14,7 +14,10 @@
             <%= link_to post.title, post_path(post.id), class: "text_dark"; %>
           </p>
           <p class="card-text"><%= post.body %></p>
-          <span>By <%= post.user.name %></span>
+          <span>By <%= post.user.name %></span><br>
+          <%= link_to post_path(post.id) do %>
+            <i class="fa-regular fa-comment"></i><%= post.post_comments.count %>
+          <% end %>
         </div>
       </div>
     </div>

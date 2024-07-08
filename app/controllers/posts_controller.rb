@@ -7,8 +7,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+     @post = Post.new(post_params)
+     @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "投稿に成功しました"
       redirect_to post_path(@post.id)
@@ -21,9 +21,10 @@ class PostsController < ApplicationController
   def index
     @posts = Post.search(params[:search])
   end
-  
+
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit
