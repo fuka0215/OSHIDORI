@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboards', to: 'dashboards#index'
-    resources :users, only: [:destroy]
+    resources :users, only: [:destroy, :show]
   end
 
   scope module: :public do
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :show, :index, :edit, :create, :destroy, :update] do
       resources :post_comments, only: [:create, :destroy]
     end
-    resources :users, only: [:show, :index, :edit, :destroy, :update]
+    resources :users
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
