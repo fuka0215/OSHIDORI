@@ -16,4 +16,8 @@
 
 <%= render 'public/posts/list', posts: @posts %>
 
+<% if @posts.count == 0 %>
+  <div class="text-center my-3">検索結果はありません</div>
+<% end %>
+
 </div>

@@ -1,12 +1,12 @@
-<!--ユーザ一覧-->
+<!--ユーザー一覧-->
 <div class="container-fluid py-5">
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
-      <h5 class="text-dark bg-light p-4 mb-0">ユーザ一覧</h5>
+      <h5 class="text-dark bg-light p-4 mb-0">ユーザーリスト</h5>
       <div class="form-body p-4">
         <%= form_with url: users_path, method: :get do |f| %>
           <div class="input-group">
-            <%= f.text_field :search, class: "form-control", placeholder: "ユーザ名" %>
+            <%= f.text_field :search, class: "form-control", placeholder: "ユーザー名" %>
           </div>
           <%= f.submit "検索", class: "btn btn-lg btn-block btn-outline-secondary mt-4" %>
         <% end %>
