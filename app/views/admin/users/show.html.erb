@@ -1,0 +1,21 @@
+<!--管理者用ユーザー詳細-->
+<div class="container-fluid py-5">
+  <div class="row">
+    <h1 class="mx-auto">管理者用ユーザー詳細</h1>
+  </div>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="row mx-3">
+      <div class="col-md-3 p-1">
+        <%= image_tag @user.get_profile_image(150, 150) %>
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h4 class="card-title"><%= @user.name %></h4>
+          <p class="card-text"><%= @user.email %></p>
+          <p class="card-text"><%= @user.bio %></p>
+          <%= link_to "退会", admin_user_path(@user), method: :delete, "data-confirm" => "本当に退会させますか？", class: "btn btn-sm btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

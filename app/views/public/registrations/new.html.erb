@@ -1,0 +1,36 @@
+
+<!--会員登録-->
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">会員登録</h5>
+
+        <div class="form-body px-4 pb-4">
+      　 <%= form_with model: @user, url: user_registration_path do |f| %>
+      　 <%= render "public/shared/error_messages", resource: resource %>
+
+          <div class="field input-group mb-3">
+            <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "ユーザー名" %>
+          </div>
+          <div class="field input-group mb-3 mt-4">
+            <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "メールアドレス" %>
+          </div>
+            <p>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br>
+            </p>
+          <div class="field input-group mb-3 mt-4">
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワード" %>
+          </div>
+          <div class="field">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "確認用パスワード" %>
+          </div>
+          <div class="actions">
+            <%= f.submit "会員登録", class: "btn btn-block btn-success mt-4" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

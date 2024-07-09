@@ -1,0 +1,38 @@
+<!--ユーザー一覧-->
+<div class="container-fluid py-5">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">ユーザーリスト</h5>
+      <div class="form-body p-4">
+        <%= form_with url: users_path, method: :get do |f| %>
+          <div class="input-group">
+            <%= f.text_field :search, class: "form-control", placeholder: "ユーザー名" %>
+          </div>
+          <%= f.submit "検索", class: "btn btn-lg btn-block btn-outline-secondary mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% @users.each do |user| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="row mx-3">
+      <div class="col-md-3">
+        <%= link_to user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(100, 100) %>
+          <% end %>
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h4 class="card-title"><%= user.name %></h4>
+          <p class="card-text"><%= user.bio %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <% if @users.count == 0 %>
+    <div class="text-center">検索結果はありません</div>
+  <% end %>
+
+</div>
