@@ -11,7 +11,7 @@ class Public::PostCommentsController < ApplicationController
       @post_comment = comment
       @post = Post.find(params[:post_id])
       flash.now[:alert] = "送信に失敗しました"
-      render "posts/show"
+      render "public/posts/show"
     end
   end
 

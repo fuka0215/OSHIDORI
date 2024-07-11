@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true
   validates :name, presence: true
+  validates :name, length: { maximum: 20 }
+  validates :bio, length: { maximum: 100 }
 
   def self.search(name)
     if name
