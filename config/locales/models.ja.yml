@@ -4,6 +4,7 @@ ja:
       user:
         name: ユーザー名
         email: メールアドレス
+        bio: 自己紹介
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
@@ -16,3 +17,5 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
+      post_comment:
+        comment: コメント
