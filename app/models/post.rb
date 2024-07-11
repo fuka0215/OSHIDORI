@@ -4,9 +4,9 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
 
-  validates :title, presence: true
-  validates :body, presence: true
-  validates :image, presence: true
+  validates :title, :body, :image, presence: true
+  validates :title, length: { maximum: 20 }
+  validates :body, length: { maximum: 160 }
 
   def self.search(title)
    if title
