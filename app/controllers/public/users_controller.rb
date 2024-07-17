@@ -31,6 +31,13 @@ class Public::UsersController < ApplicationController
     redirect_to new_user_registration_path
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+    @post = Post.find(params[:id])
+  end
+
   private
 
   def user_params

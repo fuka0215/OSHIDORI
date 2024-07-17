@@ -1,0 +1,8 @@
+
+<div class="container-fulid py-5">
+  <%= render 'public/posts/list', posts: @favorite_posts %>
+
+  <% if @favorite_posts.count == 0 %>
+    <div class="text-center my-3">いいねした投稿はありません</div>
+  <% end %>
+</div>
