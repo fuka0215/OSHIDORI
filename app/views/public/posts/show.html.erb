@@ -17,20 +17,8 @@
           <p class="card-text"><%= @post.body %></p>
           <p>投稿日:<%= @post.created_at.strftime('%y/%m/%d') %></p>
           <span>By <%= @post.user.name %></span>
-          <div>
-            <% if @post.favorited_by?(current_user) %>
-              <p>
-                <%= link_to post_favorite_path(@post), method: :delete do %>
-                  <i class="fa-solid fa-star"></i><%= @post.favorites.count %>いいね
-                <% end %>
-              </p>
-            <% else %>
-              <p>
-                <%= link_to post_favorite_path(@post), method: :post do %>
-                  <i class="fa-regular fa-star"></i><%= @post.favorites.count %>いいね
-                <% end %>
-              </p>
-            <% end %>
+          <div id="favorite_btn_<%= @post.id %>">
+          <%= render "public/favorites/btn", post: @post %>
           </div>
           <div>
             <p><i class="fa-regular fa-comment"></i><%= @post.post_comments.count %>コメント</p>
