@@ -10,10 +10,15 @@
       <div class="col-md-9">
         <div class="card-body">
           <h4 class="card-title"><%= @user.name %></h4>
-          <p class="card-text"><%= @user.bio %></p>
+          <p class="card-text"><%= @user.bio %><br>
+          <%= @user.followings.count %>フォロー中  <%= @user.followers.count %>フォロワー
+          </p>
+
           <% if @user == current_user %>
             <p><%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-block btn-success" %></p>
             <p><%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-block btn-danger" %></p>
+          <% else %>
+            <p><%= render "public/relationships/btn", user: @user, options: { class: ""} %></p>
           <% end %>
         </div>
       </div>
