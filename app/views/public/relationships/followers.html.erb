@@ -1,0 +1,6 @@
+<!-- フォロワーの一覧-->
+<% if @users.exists? %>
+  <%= render "public/users/list", users: @users %>
+<% else %>
+  <div class="text-center">フォロワーはいません</div>
+<% end %>

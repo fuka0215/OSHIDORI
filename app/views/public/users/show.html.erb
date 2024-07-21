@@ -10,8 +10,14 @@
       <div class="col-md-9">
         <div class="card-body">
           <h4 class="card-title"><%= @user.name %></h4>
-          <p class="card-text"><%= @user.bio %><br>
-          <%= @user.followings.count %>フォロー中  <%= @user.followers.count %>フォロワー
+          <p class="card-text"><%= @user.bio %></p>
+          <p>
+            <%= link_to user_followings_path(@user.id) do %>
+              <%= @user.followings.count %>フォロー中
+            <% end %>
+            <%= link_to user_followers_path(@user.id) do %>
+              <%= @user.followers.count %>フォロワー
+            <% end %>
           </p>
 
           <% if @user == current_user %>
