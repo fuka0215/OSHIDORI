@@ -1,0 +1,4 @@
+<!--フォロワーのカウント-->
+<%= link_to user_followers_path(user.id) do %>
+  <%= user.followers.count %>フォロワー
+<% end %>
