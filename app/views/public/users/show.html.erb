@@ -15,6 +15,7 @@
             <%= link_to user_followings_path(@user.id) do %>
               <%= @user.followings.count %>フォロー中
             <% end %>
+            |
             <%= link_to user_followers_path(@user.id) do %>
               <%= @user.followers.count %>フォロワー
             <% end %>
