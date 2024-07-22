@@ -15,7 +15,7 @@
             <% end %>
             </h4>
           <p class="card-text"><%= user.bio %></p>
-          <p><%= render "public/relationships/btn", user: user, options: { class: ""} %></p>
+          <p id="follow_btn_<%= user.id %>"><%= render "public/relationships/btn", user: user, options: { class: ""} %></p>
         </div>
       </div>
     </div>
