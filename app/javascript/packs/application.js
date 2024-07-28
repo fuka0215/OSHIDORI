@@ -20,17 +20,10 @@ ActiveStorage.start()
 /* global google */
 
 document.addEventListener('turbolinks:load', function () {
-  if (typeof google !== 'undefined' && typeof google.maps !== 'undefined') {
-    initializeAutocomplete();
-  } else {
-    console.error('Google Maps API not loaded.');
-  }
-});
-
-function initializeAutocomplete() {
   const inputAddress = document.getElementById('Address');
 
   if (inputAddress) {
+    // ログを出力して要素が見つかったことを確認
     console.log('Address input element found:', inputAddress);
 
     // オートコンプリートのオプション
@@ -58,4 +51,4 @@ function initializeAutocomplete() {
   } else {
     console.error('Address input element not found');
   }
-}
+});

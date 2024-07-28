@@ -21,11 +21,12 @@
           <%= f.text_area :body, id: "Body", class: "form-control", rows: "3", placeholder: "本文", autocomplete: "off" %>
           </div>
           <div>
-          <%= f.text_field :address, id: "Address", class: "form-control", placeholder: "撮影地" %>
+          <%= f.text_field :address, id: "Address", class: "form-control", placeholder: "撮影地", autocomplete: "on" %>
           </div>
           <hr>
           <%= f.submit '投稿',class: "btn btn-lg btn-block btn-info mt-4" %>
         <% end %>
       </div>
     </div>
-  </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initialize"></script>
