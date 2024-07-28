@@ -12,6 +12,7 @@ ja:
         title: タイトル
         body: 本文
         image: 画像
+        address: 住所
       admin:
         email: メールアドレス
         password: パスワード
