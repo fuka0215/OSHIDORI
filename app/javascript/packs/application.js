@@ -20,10 +20,17 @@ ActiveStorage.start()
 /* global google */
 
 document.addEventListener('turbolinks:load', function () {
+  if (typeof google !== 'undefined' && typeof google.maps !== 'undefined') {
+    initializeAutocomplete();
+  } else {
+    console.error('Google Maps API not loaded.');
+  }
+});
+
+function initializeAutocomplete() {
   const inputAddress = document.getElementById('Address');
-  
+
   if (inputAddress) {
-    // ログを出力して要素が見つかったことを確認
     console.log('Address input element found:', inputAddress);
 
     // オートコンプリートのオプション
@@ -37,10 +44,10 @@ document.addEventListener('turbolinks:load', function () {
     // 住所のオートコンプリートが選択されたとき
     autocompleteAddress.addListener('place_changed', function() {
       const place = autocompleteAddress.getPlace();
-      
+
       // 選択された場所の情報をログに出力
       console.log('Selected place:', place);
-      
+
       if (place.geometry) {
         inputAddress.value = place.formatted_address;
         console.log('Formatted address:', place.formatted_address);
@@ -51,4 +58,4 @@ document.addEventListener('turbolinks:load', function () {
   } else {
     console.error('Address input element not found');
   }
-});
+}
