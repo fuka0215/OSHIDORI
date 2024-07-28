@@ -5,6 +5,9 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  geocoded_by :address
+  after_validation :geocode
+
   validates :title, :body, :image, presence: true
   validates :title, length: { maximum: 20 }
   validates :body, length: { maximum: 160 }
@@ -25,7 +28,7 @@ class Post < ApplicationRecord
     end
       image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
