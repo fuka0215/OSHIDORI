@@ -31,9 +31,9 @@ Post.find_or_create_by!(title: "ぬいとカフェへ") do |post|
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg")
   post.body = "パフェが来るまで一緒に待ってます！"
   post.user = sakurako
-  post.latitude = Faker::Address.latitude.to_f
-  post.longitude = Faker::Address.longitude.to_f
-  post.address = "カフェ"
+  post.latitude = 35.71016528613116
+  post.longitude = 139.80959622430547
+  post.address = "すみだ水族館"
 end
 
 Post.find_or_create_by!(title: "共に山登り") do |post|
@@ -49,7 +49,7 @@ Post.find_or_create_by!(title: "片付け見守り隊長") do |post|
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename:"sample-post3.jpg")
   post.body = '見守ってもらったら早く終わった気がする。'
   post.user = yuzuru
-  post.latitude = Faker::Address.latitude.to_f
-  post.longitude = Faker::Address.longitude.to_f
-  post.address = "家"
+  post.latitude = 35.46629120801794
+  post.longitude = 139.622126343822
+  post.address = "横浜駅"
 end
