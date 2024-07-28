@@ -69,5 +69,5 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 
-gem "geocoder"
 gem "faker"
+gem 'geocoder', '~> 1.8', '>= 1.8.3'

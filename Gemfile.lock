@@ -265,7 +265,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   faker
-  geocoder
+  geocoder (~> 1.8, >= 1.8.3)
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
