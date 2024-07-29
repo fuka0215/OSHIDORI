@@ -1,3 +1,4 @@
+
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
@@ -13,24 +14,17 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();
 
 /* global google */
 
 document.addEventListener('turbolinks:load', function () {
-  if (typeof google !== 'undefined' && typeof google.maps !== 'undefined') {
-    initializeAutocomplete();
-  } else {
-    console.error('Google Maps API not loaded.');
-  }
-});
-
-function initializeAutocomplete() {
   const inputAddress = document.getElementById('Address');
 
   if (inputAddress) {
+    // ログを出力して要素が見つかったことを確認
     console.log('Address input element found:', inputAddress);
 
     // オートコンプリートのオプション
@@ -58,4 +52,4 @@ function initializeAutocomplete() {
   } else {
     console.error('Address input element not found');
   }
-}
+});
