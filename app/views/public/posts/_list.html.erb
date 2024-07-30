@@ -16,7 +16,7 @@
           <p class="card-text"><%= post.body %></p>
           <span>By <%= post.user.name %></span><br>
           <%= link_to post_path(post.id) do %>
-            <i class="fa-regular fa-comment"></i><%= post.post_comments.count %>コメント
+            <i class="fa-regular fa-comment"><%= post.post_comments.count %></i>
           <% end %>
           <div id="favorite_btn_<%= post.id %>">
           <%= render "public/favorites/btn", post: post %>

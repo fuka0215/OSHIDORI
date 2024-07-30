@@ -1,4 +1,4 @@
-<!--ユーザ詳細-->
+<!--マイページ-->
 <div class="card-list-container py-5">
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <div class="row mx-3">
@@ -12,15 +12,20 @@
           <h4 class="card-title"><%= @user.name %></h4>
           <p class="card-text"><%= @user.bio %></p>
           <p>
+            <!--フォロー-->
             <div>
             <%= link_to user_followings_path(@user.id) do %>
               <%= @user.followings.count %>フォロー中
             <% end %>
             </div>
+            <!--フォロワー-->
             <div id="follow_count_<%= @user.id %>">
             <%= render "public/relationships/follow_count", user: @user %>
             </div>
+            <!--いいね-->
+            <div><%= link_to "いいね一覧", favorites_user_path(current_user.id) %></div>
           </p>
+
 
           <% unless @user.guest_user? %>
             <% if @user == current_user %>
@@ -30,7 +35,6 @@
               <p id="follow_btn_<%= @user.id %>"><%= render "public/relationships/btn", user: @user, options: { class: ""} %></p>
             <% end %>
           <% end %>
-
 
         </div>
       </div>
