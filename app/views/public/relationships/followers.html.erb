@@ -2,5 +2,5 @@
 <% if @users.exists? %>
   <%= render "public/users/list", users: @users %>
 <% else %>
-  <div class="text-center">フォロワーはいません</div>
+  <div class="text-center py-5">フォロワーはいません</div>
 <% end %>
