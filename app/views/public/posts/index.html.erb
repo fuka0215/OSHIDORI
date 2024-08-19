@@ -14,6 +14,8 @@
     </div>
   </div>
 
+<%= render 'public/posts/map', posts: @posts %>
+
 <%= render 'public/posts/list', posts: @posts %>
 
 <% if @posts.count == 0 %>
@@ -21,5 +23,3 @@
 <% end %>
 
 </div>
-
-<%= render 'public/posts/map', posts: @posts %>

@@ -5,17 +5,19 @@
     <%= image_tag @post.get_image(300, 300), class: "card-img-top"; %>
     <div class="card-body">
       <div class="row">
-        <div class="col-2">
+        <div class="col-1">
+          <div>
           <%= link_to user_path(@post.user.id) do %>
-            <%= image_tag @post.user.get_profile_image(100, 100), class: "rounded-circle"; %>
+            <%= image_tag @post.user.get_profile_image(50, 50), class: "rounded-circle"; %>
           <% end %>
+          </div>
         </div>
-        <div class="col-10">
-          <p class="card-title">
+        <div class="col-9">
+          <h5 class="card-title">
             <%= link_to @post.title, post_path(@post.id), class: "text_dark"; %>
-          </p>
+          </h5>
           <p class="card-text"><%= @post.body %></p>
-          <p><%= @post.created_at.strftime('%y/%m/%d') %></p>
+          <span>撮影地:<%= @post.address %></span><br>
           <span>By <%= @post.user.name %></span>
           <div class="row">
             <div class="col-1">
@@ -26,18 +28,12 @@
             <i class="fa-regular fa-comment"><%= @post.post_comments.count %></i>
           </div>
           </div>
-          <div>
-            <% @post.post_comments.each do |post_comment| %>
-            <div class="row">
-              <%= image_tag post_comment.user.get_profile_image(50, 50) %>
-              <%= link_to post_comment.user.name, user_path(post_comment.user.id) %>
-              <%= post_comment.comment %>
-              <% if post_comment.user == current_user %>
-                <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
-              <% end %>
-            </div>
-            <% end %>
           </div>
+          <div class="col-2">
+            <span><%= @post.created_at.strftime('%y/%m/%d') %></span>
+          </div>
+          </div>
+          <hr>
           <%= render 'layouts/errors_messages', model: @post_comment %>
           <div class="form-body my-1">
             <%= form_with model: [@post, @post_comment] do |f| %>
@@ -50,7 +46,28 @@
             </div>
           </div>
 
+          <div>
+            <% @post.post_comments.each do |post_comment| %>
+            <hr>
+            <div class="row">
+              <div class="col-1">
+              <%= image_tag post_comment.user.get_profile_image(50, 50), class: "rounded-circle";%>
+              </div>
+              <div class="col-9">
+              <%= link_to post_comment.user.name, user_path(post_comment.user.id) %><br>
+              <span><%= post_comment.comment %></span>
+              </div>
+              <% if post_comment.user == current_user %>
+                <div class="col-2 text-right">
+                <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+                </div>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+
           <% if @post.user == current_user %>
+          <hr>
             <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-block btn-success" %>
             <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-block btn-danger" %>
           <% end %>
