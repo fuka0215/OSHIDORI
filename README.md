@@ -27,7 +27,7 @@
 - おすすめの撮影スポットを見つけた時
 
 ## 設計書
-後ほど作成予定
+https://docs.google.com/spreadsheets/d/10_drSdZLZWGU74W7INZRfew5ytUZkdFO17jm4DwAM_c/edit?usp=sharing
 
 ## 開発環境
 
