@@ -1,4 +1,4 @@
-<!-- ユーザーリストの部分テンプレ -->
+<!-- ユーザーリスト -->
 <% users.each do |user| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <div class="row mx-3">
@@ -13,7 +13,7 @@
             <%= link_to user_path(user.id) do %>
               <%= user.name %>
             <% end %>
-            </h4>
+          </h4>
           <p class="card-text"><%= user.bio %></p>
           <p id="follow_btn_<%= user.id %>"><%= render "public/relationships/btn", user: user, options: { class: ""} %></p>
         </div>
