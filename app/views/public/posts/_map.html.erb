@@ -2,7 +2,6 @@
 
 <script>
   function initMap() {
-    // 地図要素を取得する（マーカーを表示させるために必要）
     const mapElement = document.getElementById('map');
 
     const mapOptions = {
@@ -12,7 +11,6 @@
 
     const map = new google.maps.Map(mapElement, mapOptions);
 
-    // マーカーを追加（Postの情報からマーカーを追加する）
     <% posts.each do |post| %>
       new google.maps.Marker({
         position: {lat: <%= post.latitude %>, lng: <%= post.longitude %>},

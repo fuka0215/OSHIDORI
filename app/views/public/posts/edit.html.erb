@@ -5,13 +5,18 @@
       <h5 class="text-dark bg-light p-4 mb-0">投稿編集</h5>
       <div class="form-body p-4">
         <%= render 'layouts/errors_messages', model: @post %>
-        <%= form_with model: @post do |f| %>
-          <%= f.file_field :image, accept: "image/*", class: "w-100" %>
-          <div class="input-group mb-3 mt-4">
-            <%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
-          </div>
-          <%= f.text_area :body, class: "form-control", rows: "3", placeholder: "本文" %>
-          <hr>
+        <%= form_with model: @post, local: true, data: { turbolinks: false } do |f| %>
+          <%= f.file_field :image, accept: "image/*", class: "w-100", autocomplete: "off" %>
+        <div class="input-group mb-3 mt-4">
+          <%= f.text_field :title, id: "Title", class: "form-control", placeholder: "タイトル", autocomplete: "off" %>
+        </div>
+        <div class="input-group mb-3">
+          <%= f.text_area :body, id: "Body", class: "form-control", rows: "3", placeholder: "本文", autocomplete: "off" %>
+        </div>
+        <div class="input-group">
+          <%= f.text_field :address, id: "Address", class: "form-control", placeholder: "撮影地", autocomplete: "on" %>
+        </div>
+        <hr>
           <%= f.submit '保存',class: "btn btn-lg btn-block btn-info mt-4" %>
         <% end %>
         <p class="mt-2"><%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-lg btn-block btn-danger" %></p>
