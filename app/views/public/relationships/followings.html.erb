@@ -1,6 +1,8 @@
 <!-- フォローの一覧-->
-<% if @users.exists? %>
-  <%= render "public/users/list", users: @users %>
-<% else %>
-  <div class="text-center py-5">フォローしているユーザーはいません</div>
-<% end %>
+<div class="container py-5">
+  <% if @users.exists? %>
+    <%= render "public/users/list", users: @users %>
+  <% else %>
+    <div class="text-center">フォローしているユーザーはいません</div>
+  <% end %>
+</div>

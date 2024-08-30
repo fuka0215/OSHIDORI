@@ -1,6 +1,8 @@
 <!-- フォロワーの一覧-->
-<% if @users.exists? %>
-  <%= render "public/users/list", users: @users %>
-<% else %>
-  <div class="text-center py-5">フォロワーはいません</div>
-<% end %>
+<div class="container py-5">
+  <% if @users.exists? %>
+    <%= render "public/users/list", users: @users %>
+  <% else %>
+    <div class="text-center">フォロワーはいません</div>
+  <% end %>
+</div>
