@@ -2,9 +2,11 @@ module NotificationsHelper
   def notification_message(notification)
     case notification.notifiable_type
     when "Post"
-      "フォローしている#{notification.notifiable.user.name}さんが#{notification.notifiable.title}を投稿しました"
+      "#{notification.notifiable.user.name}さんが新規投稿しました"
+    when "PostComment"
+      "あなたの投稿が#{notification.notifiable.user.name}さんからコメントされました"
     else
-      "投稿した#{notification.notifiable.post.title}が#{notification.notifiable.user.name}さんにいいねされました"
+      "あなたの投稿が#{notification.notifiable.user.name}さんにいいねされました"
     end
   end
 end
