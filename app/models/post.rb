@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy  
 
   geocoded_by :address
   after_validation :geocode
@@ -38,7 +39,14 @@ class Post < ApplicationRecord
   def validate_address
       geocoded = Geocoder.search(address)
     unless geocoded&.first&.coordinates.present?
-      errors.add(:address, 'が存在しません') # 「住所が存在しません」と表示される
+      errors.add(:address, 'が存在しません') 
     end
   end
+  
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id)
+    end
+  end
+  
 end
