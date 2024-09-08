@@ -27,7 +27,10 @@
 - おすすめの撮影スポットを見つけた時
 
 ## 設計書
-https://docs.google.com/spreadsheets/d/10_drSdZLZWGU74W7INZRfew5ytUZkdFO17jm4DwAM_c/edit?usp=sharing
+- 詳細設計書
+  https://docs.google.com/spreadsheets/d/1R3cM4PV3W-p9wwjhmWDX1F2Wn0uPTqCufgNUu_gPEWk/edit?gid=549108681#gid=549108681
+- インフラ設計書
+  https://docs.google.com/spreadsheets/d/10_drSdZLZWGU74W7INZRfew5ytUZkdFO17jm4DwAM_c/edit?usp=sharing
 
 ## 開発環境
 
