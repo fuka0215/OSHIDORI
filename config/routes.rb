@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   scope module: :public do
     devise_for :users
     root to: "homes#top"
+    get 'mypage', to: 'users#show', as: 'mypage'
 
     resources :posts, only: [:new, :show, :index, :edit, :create, :destroy, :update] do
       resource :favorite, only: [:create, :destroy]
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
         get "followers" => "relationships#followers", as: "followers"
     end
     resources :notifications, only: [:update]
-    get 'mypage', to: 'users#show', as: 'mypage'
+    resources :chats, only: [:show, :create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
