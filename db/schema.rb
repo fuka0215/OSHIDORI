@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_02_112810) do
+ActiveRecord::Schema.define(version: 2024_09_10_144759) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 2024_09_02_112810) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_id_id"
+    t.integer "room_id_id"
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id_id"], name: "index_chats_on_room_id_id"
+    t.index ["user_id_id"], name: "index_chats_on_user_id_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -94,6 +104,20 @@ ActiveRecord::Schema.define(version: 2024_09_02_112810) do
     t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
+    t.integer "user_id_id"
+    t.integer "room_id_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id_id"], name: "index_user_rooms_on_room_id_id"
+    t.index ["user_id_id"], name: "index_user_rooms_on_user_id_id"
   end
 
   create_table "users", force: :cascade do |t|
