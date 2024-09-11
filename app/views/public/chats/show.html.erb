@@ -1,15 +1,19 @@
 <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのDM</h1>
 
-<div class="message" class="w-75">
+<div class="message container">
   <% @chats.each do |chat| %>
+    <div class="row">
     <% if chat.user_id == current_user.id %>
-      <%= render "chats/chat", chat: chat %>
+    <div class="col-10 justify-content-start">
+      <%= render "public/chats/chat", chat: chat %>
+    </div>
     <% else %>
-      <div class="left-container">
+      <div class="col-10 justify-content-end">
         <%= image_tag @user.get_profile_image(50, 50), class: "rounded-circle";%>
         <p class="text-left bg-secondary-subtle p-5"><%= chat.message %></p>
       </div>
     <% end %>
+    </div>
   <% end %>
 </div>
 
