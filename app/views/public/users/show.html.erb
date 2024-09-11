@@ -30,6 +30,10 @@
               <p id="follow_btn_<%= @user.id %>"><%= render "public/relationships/btn", user: @user, options: { class: ""} %></p>
             <% end %>
           <% end %>
+
+          <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
+            <%= link_to 'chatを始める', chat_path(user.id), class: "ml-3" %>
+          <% end %>
         </div>
       </div>
     </div>
