@@ -1,6 +1,7 @@
 <!-- ユーザーの一覧部分 -->
 <% users.each do |user| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="card-body">
     <div class="row mx-3">
       <div class="col-md-3">
         <%= link_to user_path(user.id) do %>
@@ -8,7 +9,6 @@
         <% end %>
       </div>
       <div class="col-md-9">
-        <div class="card-body">
           <h4 class="card-title">
             <%= link_to user_path(user.id) do %>
               <%= user.name %>
