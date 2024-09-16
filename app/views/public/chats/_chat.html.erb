@@ -1,4 +1,8 @@
-<div class="right-container d-flex justify-content-end">
-  <p id="chat_<%= chat.id %>" class="bg-success-subtle p-5 text-right"><%= chat.message %></p>
-  <%= button_to "削除", chat_path(chat), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm ml-2", remote: true, id: "delete_chat_#{chat.id}" %>
+<div class="row justify-content-end">
+<div class="col-8">
+  <p id="chat_<%= chat.id %>" class="text-right"><%= chat.message %></p>
+</div>
+<div class="col-2">
+  <%= button_to "削除", chat_path(chat), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm my-1", remote: true, id: "delete_chat_#{chat.id}" %>
+</div>
 </div>
