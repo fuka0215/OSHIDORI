@@ -1,0 +1,36 @@
+<!-- DM詳細画面-->
+<div class="container w-50 mx-auto py-3">
+  <div class="row">
+    <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのDM</h1>
+  </div>
+  <div class="message">
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+        <%= render "public/chats/chat", chat: chat %>
+    <% else %>
+      <div class="row">
+        <div class="col-1">
+          <%= image_tag @user.get_profile_image(50, 50), class: "rounded-circle";%>
+        </div>
+        <div class="col-8">
+          <p class="text-left"><%= chat.message %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+  <hr>
+  <div class="errors">
+    <%= render "layouts/errors_messages", model: @chat %>
+  </div>
+
+  <div class="row px-3">
+    <%= form_with model: @chat, data: {remote: true} do |f| %>
+      <%= f.text_field :message,class: "form-control", size:75, placeholder: "メッセージ" %>
+      <div class="text-right my-1">
+        <%= f.submit "送信", class: "btn btn-info btn-sm" %>
+      </div>
+      <%= f.hidden_field :room_id %>
+    <% end %>
+  </div>
+</div>
